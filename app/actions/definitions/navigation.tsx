@@ -37,6 +37,8 @@ import {
   trashPath,
 } from "~/utils/routeHelpers";
 
+console.log(`172_app/actions/definitions/navigation.tsx`);
+
 export const navigateToHome = createAction({
   name: ({ t }) => t("Home"),
   section: NavigationSection,

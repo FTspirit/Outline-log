@@ -30,6 +30,8 @@ import { DocumentSection } from "~/actions/sections";
 import history from "~/utils/history";
 import { homePath, newDocumentPath, searchPath } from "~/utils/routeHelpers";
 
+console.log(`144_app/actions/definitions/documents.tsx`);
+
 export const openDocument = createAction({
   name: ({ t }) => t("Open document"),
   section: DocumentSection,
@@ -37,6 +39,7 @@ export const openDocument = createAction({
   keywords: "go to",
   icon: <DocumentIcon />,
   children: ({ stores }) => {
+    console.log(`145_app/actions/definitions/documents.tsx_openDocument`);
     const paths = stores.collections.pathsToDocuments;
 
     return paths
@@ -75,6 +78,9 @@ export const starDocument = createAction({
   icon: <StarredIcon />,
   keywords: "favorite bookmark",
   visible: ({ activeDocumentId, stores }) => {
+    console.log(
+      `146_app/actions/definitions/documents.tsx_starDocumentVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
@@ -84,6 +90,9 @@ export const starDocument = createAction({
     );
   },
   perform: ({ activeDocumentId, stores }) => {
+    console.log(
+      `147_app/actions/definitions/documents.tsx_starDocumentPerform`
+    );
     if (!activeDocumentId) {
       return;
     }
@@ -99,6 +108,9 @@ export const unstarDocument = createAction({
   icon: <UnstarredIcon />,
   keywords: "unfavorite unbookmark",
   visible: ({ activeDocumentId, stores }) => {
+    console.log(
+      `148_app/actions/definitions/documents.tsx_unstarDocumentVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
@@ -109,6 +121,9 @@ export const unstarDocument = createAction({
     );
   },
   perform: ({ activeDocumentId, stores }) => {
+    console.log(
+      `149_app/actions/definitions/documents.tsx_unstarDocumentPerform`
+    );
     if (!activeDocumentId) {
       return;
     }
@@ -123,6 +138,9 @@ export const subscribeDocument = createAction({
   section: DocumentSection,
   icon: <SubscribeIcon />,
   visible: ({ activeDocumentId, stores }) => {
+    console.log(
+      `150_app/actions/definitions/documents.tsx_subscribeDocumentVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
@@ -135,6 +153,9 @@ export const subscribeDocument = createAction({
     );
   },
   perform: ({ activeDocumentId, stores, t }) => {
+    console.log(
+      `151_app/actions/definitions/documents.tsx_subscribeDocumentPerform`
+    );
     if (!activeDocumentId) {
       return;
     }
@@ -154,6 +175,9 @@ export const unsubscribeDocument = createAction({
   section: DocumentSection,
   icon: <UnsubscribeIcon />,
   visible: ({ activeDocumentId, stores }) => {
+    console.log(
+      `152_app/actions/definitions/documents.tsx_unsubscribeDocumentVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
@@ -166,6 +190,9 @@ export const unsubscribeDocument = createAction({
     );
   },
   perform: ({ activeDocumentId, stores, currentUserId, t }) => {
+    console.log(
+      `153_app/actions/definitions/documents.tsx_unsubscribeDocumentPerform`
+    );
     if (!activeDocumentId || !currentUserId) {
       return;
     }
@@ -189,6 +216,9 @@ export const downloadDocumentAsHTML = createAction({
   visible: ({ activeDocumentId, stores }) =>
     !!activeDocumentId && stores.policies.abilities(activeDocumentId).download,
   perform: ({ activeDocumentId, stores }) => {
+    console.log(
+      `154_app/actions/definitions/documents.tsx_downloadDocumentAsHTMLPerform`
+    );
     if (!activeDocumentId) {
       return;
     }
@@ -207,6 +237,9 @@ export const downloadDocumentAsMarkdown = createAction({
   visible: ({ activeDocumentId, stores }) =>
     !!activeDocumentId && stores.policies.abilities(activeDocumentId).download,
   perform: ({ activeDocumentId, stores }) => {
+    console.log(
+      `155_app/actions/definitions/documents.tsx_downloadDocumentAsMarkdownPerform`
+    );
     if (!activeDocumentId) {
       return;
     }
@@ -234,6 +267,9 @@ export const duplicateDocument = createAction({
   visible: ({ activeDocumentId, stores }) =>
     !!activeDocumentId && stores.policies.abilities(activeDocumentId).update,
   perform: async ({ activeDocumentId, t, stores }) => {
+    console.log(
+      `156_app/actions/definitions/documents.tsx_duplicateDocumentPerform`
+    );
     if (!activeDocumentId) {
       return;
     }
@@ -259,6 +295,9 @@ export const pinDocumentToCollection = createAction({
   icon: <PinIcon />,
   iconInContextMenu: false,
   visible: ({ activeCollectionId, activeDocumentId, stores }) => {
+    console.log(
+      `157_app/actions/definitions/documents.tsx_pinDocumentToCollectionVisible`
+    );
     if (!activeDocumentId || !activeCollectionId) {
       return false;
     }
@@ -269,6 +308,9 @@ export const pinDocumentToCollection = createAction({
     );
   },
   perform: async ({ activeDocumentId, activeCollectionId, t, stores }) => {
+    console.log(
+      `158_app/actions/definitions/documents.tsx_pinDocumentToCollectionPerform`
+    );
     if (!activeDocumentId || !activeCollectionId) {
       return;
     }
@@ -294,6 +336,9 @@ export const pinDocumentToHome = createAction({
   icon: <PinIcon />,
   iconInContextMenu: false,
   visible: ({ activeDocumentId, currentTeamId, stores }) => {
+    console.log(
+      `159_app/actions/definitions/documents.tsx_pinDocumentToHomeVisible`
+    );
     if (!currentTeamId || !activeDocumentId) {
       return false;
     }
@@ -306,6 +351,9 @@ export const pinDocumentToHome = createAction({
     );
   },
   perform: async ({ activeDocumentId, location, t, stores }) => {
+    console.log(
+      `160_app/actions/definitions/documents.tsx_pinDocumentToHomePerform`
+    );
     if (!activeDocumentId) {
       return;
     }
@@ -343,6 +391,9 @@ export const importDocument = createAction({
   icon: <ImportIcon />,
   keywords: "upload",
   visible: ({ activeCollectionId, activeDocumentId, stores }) => {
+    console.log(
+      `161_app/actions/definitions/documents.tsx_importDocumentVisible`
+    );
     if (activeDocumentId) {
       return !!stores.policies.abilities(activeDocumentId).createChildDocument;
     }
@@ -354,6 +405,9 @@ export const importDocument = createAction({
     return false;
   },
   perform: ({ activeCollectionId, activeDocumentId, stores }) => {
+    console.log(
+      `162_app/actions/definitions/documents.tsx_importDocumentPerform`
+    );
     const { documents, toasts } = stores;
     const input = document.createElement("input");
     input.type = "file";
@@ -391,6 +445,9 @@ export const createTemplate = createAction({
   icon: <ShapesIcon />,
   keywords: "new create template",
   visible: ({ activeCollectionId, activeDocumentId, stores }) => {
+    console.log(
+      `163_app/actions/definitions/documents.tsx_createTemplateVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
@@ -403,6 +460,9 @@ export const createTemplate = createAction({
     );
   },
   perform: ({ activeDocumentId, stores, t, event }) => {
+    console.log(
+      `164_app/actions/definitions/documents.tsx_createTemplatePerform`
+    );
     if (!activeDocumentId) {
       return;
     }
@@ -423,6 +483,9 @@ export const openRandomDocument = createAction({
   name: ({ t }) => t(`Open random document`),
   icon: <ShuffleIcon />,
   perform: ({ stores, activeDocumentId }) => {
+    console.log(
+      `165_app/actions/definitions/documents.tsx_openRandomDocumentPerform`
+    );
     const documentPaths = stores.collections.pathsToDocuments.filter(
       (path) => path.type === "document" && path.id !== activeDocumentId
     );
@@ -451,12 +514,18 @@ export const moveDocument = createAction({
   section: DocumentSection,
   icon: <MoveIcon />,
   visible: ({ activeDocumentId, stores }) => {
+    console.log(
+      `166_app/actions/definitions/documents.tsx_moveDocumentVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
     return !!stores.policies.abilities(activeDocumentId).move;
   },
   perform: ({ activeDocumentId, stores, t }) => {
+    console.log(
+      `167_app/actions/definitions/documents.tsx_moveDocumentPerform`
+    );
     if (activeDocumentId) {
       const document = stores.documents.get(activeDocumentId);
       if (!document) {
@@ -483,12 +552,18 @@ export const archiveDocument = createAction({
   section: DocumentSection,
   icon: <ArchiveIcon />,
   visible: ({ activeDocumentId, stores }) => {
+    console.log(
+      `168_app/actions/definitions/documents.tsx_archiveDocumentVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
     return !!stores.policies.abilities(activeDocumentId).archive;
   },
   perform: async ({ activeDocumentId, stores, t }) => {
+    console.log(
+      `169_app/actions/definitions/documents.tsx_archiveDocumentPerform`
+    );
     if (activeDocumentId) {
       const document = stores.documents.get(activeDocumentId);
       if (!document) {
@@ -509,12 +584,18 @@ export const deleteDocument = createAction({
   icon: <TrashIcon />,
   dangerous: true,
   visible: ({ activeDocumentId, stores }) => {
+    console.log(
+      `168_app/actions/definitions/documents.tsx_deleteDocumentVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
     return !!stores.policies.abilities(activeDocumentId).delete;
   },
   perform: ({ activeDocumentId, stores, t }) => {
+    console.log(
+      `169_app/actions/definitions/documents.tsx_deleteDocumentPerform`
+    );
     if (activeDocumentId) {
       const document = stores.documents.get(activeDocumentId);
       if (!document) {
@@ -543,12 +624,18 @@ export const permanentlyDeleteDocument = createAction({
   icon: <CrossIcon />,
   dangerous: true,
   visible: ({ activeDocumentId, stores }) => {
+    console.log(
+      `170_app/actions/definitions/documents.tsx_permanentlyDeleteDocumentVisible`
+    );
     if (!activeDocumentId) {
       return false;
     }
     return !!stores.policies.abilities(activeDocumentId).permanentDelete;
   },
   perform: ({ activeDocumentId, stores, t }) => {
+    console.log(
+      `171_app/actions/definitions/documents.tsx_permanentlyDeleteDocumentPerform`
+    );
     if (activeDocumentId) {
       const document = stores.documents.get(activeDocumentId);
       if (!document) {

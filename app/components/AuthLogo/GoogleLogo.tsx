@@ -6,6 +6,8 @@ type Props = {
   className?: string;
 };
 
+console.log(`181_app/components/AuthLogo/GoogleLogo.tsx`);
+
 function GoogleLogo({ size = 34, fill = "#FFF", className }: Props) {
   return (
     <svg

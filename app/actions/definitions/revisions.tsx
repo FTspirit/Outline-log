@@ -8,6 +8,8 @@ import { RevisionSection } from "~/actions/sections";
 import history from "~/utils/history";
 import { documentHistoryUrl, matchDocumentHistory } from "~/utils/routeHelpers";
 
+console.log(`173_app/actions/definitions/revisions.tsx`);
+
 export const restoreRevision = createAction({
   name: ({ t }) => t("Restore revision"),
   icon: <RestoreIcon />,
@@ -15,6 +17,9 @@ export const restoreRevision = createAction({
   visible: ({ activeDocumentId, stores }) =>
     !!activeDocumentId && stores.policies.abilities(activeDocumentId).update,
   perform: async ({ t, event, location, activeDocumentId }) => {
+    console.log(
+      `174_app/actions/definitions/revisions.tsx_restoreRevisionPerform`
+    );
     event?.preventDefault();
     if (!activeDocumentId) {
       return;
@@ -53,6 +58,9 @@ export const copyLinkToRevision = createAction({
   icon: <LinkIcon />,
   section: RevisionSection,
   perform: async ({ activeDocumentId, stores, t }) => {
+    console.log(
+      `175_app/actions/definitions/revisions.tsx_copyLinkToRevisionPerform`
+    );
     if (!activeDocumentId) {
       return;
     }

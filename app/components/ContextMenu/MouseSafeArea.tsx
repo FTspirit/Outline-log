@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useMousePosition } from "~/hooks/useMousePosition";
 
+console.log(`186_app/components/ContextMenu/MouseSafeArea.tsx`);
+
 type Positions = {
   /* Sub-menu x */
   x: number;

@@ -17,6 +17,8 @@ import { createAction } from "~/actions";
 import { CollectionSection } from "~/actions/sections";
 import history from "~/utils/history";
 
+console.log(`132_app/actions/definitions/collections.tsx`);
+
 const ColorCollectionIcon = ({ collection }: { collection: Collection }) => {
   return <DynamicCollectionIcon collection={collection} />;
 };
@@ -27,6 +29,7 @@ export const openCollection = createAction({
   shortcut: ["o", "c"],
   icon: <CollectionIcon />,
   children: ({ stores }) => {
+    console.log(`133_app/actions/definitions/collections.tsx_openCollection`);
     const collections = stores.collections.orderedData;
     return collections.map((collection) => ({
       // Note: using url which includes the slug rather than id here to bust
@@ -48,6 +51,7 @@ export const createCollection = createAction({
   visible: ({ stores }) =>
     stores.policies.abilities(stores.auth.team?.id || "").createCollection,
   perform: ({ t, event }) => {
+    console.log(`134_app/actions/definitions/collections.tsx_createCollection`);
     event?.preventDefault();
     event?.stopPropagation();
     stores.dialogs.openModal({
@@ -66,6 +70,7 @@ export const editCollection = createAction({
     !!activeCollectionId &&
     stores.policies.abilities(activeCollectionId).update,
   perform: ({ t, activeCollectionId }) => {
+    console.log(`135_app/actions/definitions/collections.tsx_editCollection`);
     if (!activeCollectionId) {
       return;
     }
@@ -91,6 +96,9 @@ export const editCollectionPermissions = createAction({
     !!activeCollectionId &&
     stores.policies.abilities(activeCollectionId).update,
   perform: ({ t, activeCollectionId }) => {
+    console.log(
+      `136_app/actions/definitions/collections.tsx_editCollectionPermissions`
+    );
     if (!activeCollectionId) {
       return;
     }
@@ -108,6 +116,9 @@ export const starCollection = createAction({
   icon: <StarredIcon />,
   keywords: "favorite bookmark",
   visible: ({ activeCollectionId, stores }) => {
+    console.log(
+      `137_app/actions/definitions/collections.tsx_starCollectionVisible`
+    );
     if (!activeCollectionId) {
       return false;
     }
@@ -118,6 +129,9 @@ export const starCollection = createAction({
     );
   },
   perform: ({ activeCollectionId, stores }) => {
+    console.log(
+      `138_app/actions/definitions/collections.tsx_starCollectionPerform`
+    );
     if (!activeCollectionId) {
       return;
     }
@@ -133,6 +147,9 @@ export const unstarCollection = createAction({
   icon: <UnstarredIcon />,
   keywords: "unfavorite unbookmark",
   visible: ({ activeCollectionId, stores }) => {
+    console.log(
+      `139_app/actions/definitions/collections.tsx_unstarCollectionVisible`
+    );
     if (!activeCollectionId) {
       return false;
     }
@@ -143,6 +160,9 @@ export const unstarCollection = createAction({
     );
   },
   perform: ({ activeCollectionId, stores }) => {
+    console.log(
+      `140_app/actions/definitions/collections.tsx_unstarCollectionPerform`
+    );
     if (!activeCollectionId) {
       return;
     }

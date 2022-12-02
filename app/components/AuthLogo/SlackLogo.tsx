@@ -6,6 +6,8 @@ type Props = {
   className?: string;
 };
 
+console.log(`183_app/components/AuthLogo/SlackLogo.tsx`);
+
 function SlackLogo({ size = 34, fill = "#FFF", className }: Props) {
   return (
     <svg

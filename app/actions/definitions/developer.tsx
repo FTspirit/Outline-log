@@ -7,12 +7,17 @@ import env from "~/env";
 import { client } from "~/utils/ApiClient";
 import { deleteAllDatabases } from "~/utils/developer";
 
+console.log(`141_app/actions/definitions/developer.tsx`);
+
 export const clearIndexedDB = createAction({
   name: ({ t }) => t("Delete IndexedDB cache"),
   icon: <TrashIcon />,
   keywords: "cache clear database",
   section: DeveloperSection,
   perform: async ({ t }) => {
+    console.log(
+      `142_app/actions/definitions/developer.tsx_clearIndexedDBPerform`
+    );
     await deleteAllDatabases();
     stores.toasts.showToast(t("IndexedDB cache deleted"));
   },
@@ -24,6 +29,9 @@ export const createTestUsers = createAction({
   section: DeveloperSection,
   visible: () => env.ENVIRONMENT === "development",
   perform: async () => {
+    console.log(
+      `143_app/actions/definitions/developer.tsx_createTestUsersPerform`
+    );
     const count = 10;
 
     try {

@@ -25,6 +25,8 @@ import MouseSafeArea from "./MouseSafeArea";
 import Separator from "./Separator";
 import ContextMenu from ".";
 
+console.log(`189_app/components/ContextMenu/Template.tsx`);
+
 type Props = {
   actions?: (Action | MenuSeparator | MenuHeading)[];
   context?: Partial<ActionContext>;

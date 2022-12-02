@@ -6,6 +6,8 @@ import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
 import MenuIconWrapper from "../MenuIconWrapper";
 
+console.log(`185_app/components/ContextMenu/MenuItem.tsx`);
+
 type Props = {
   onClick?: (event: React.SyntheticEvent) => void | Promise<void>;
   selected?: boolean;

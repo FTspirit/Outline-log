@@ -6,6 +6,8 @@ type Props = {
   className?: string;
 };
 
+console.log(`182_app/components/AuthLogo/MicrosoftLogo.tsx`);
+
 function MicrosoftLogo({ size = 34, fill = "#FFF", className }: Props) {
   return (
     <svg

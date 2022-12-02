@@ -14,6 +14,8 @@ function resolve<T>(value: any, context: ActionContext): T {
   return typeof value === "function" ? value(context) : value;
 }
 
+console.log(`179_app/actions/index.ts`);
+
 export function createAction(definition: Optional<Action, "id">): Action {
   return {
     ...definition,
@@ -25,6 +27,7 @@ export function actionToMenuItem(
   action: Action,
   context: ActionContext
 ): MenuItemButton | MenuItemWithChildren {
+  console.log(`180_app/actions/index.ts_actionToMenuItem`);
   const resolvedIcon = resolve<React.ReactElement<any>>(action.icon, context);
   const resolvedChildren = resolve<Action[]>(action.children, context);
   const visible = action.visible ? action.visible(context) : true;
@@ -69,7 +72,7 @@ export function actionToKBar(
   if (typeof action.visible === "function" && !action.visible(context)) {
     return [];
   }
-
+  console.log(`180_app/actions/index.ts_actionToKBar`);
   const resolvedIcon = resolve<React.ReactElement<any>>(action.icon, context);
   const resolvedChildren = resolve<Action[]>(action.children, context);
   const resolvedSection = resolve<string>(action.section, context);

@@ -5,6 +5,8 @@ import { Theme } from "~/stores/UiStore";
 import { createAction } from "~/actions";
 import { SettingsSection } from "~/actions/sections";
 
+console.log(`176_app/actions/definitions/settings.tsx`);
+
 export const changeToDarkTheme = createAction({
   name: ({ t }) => t("Dark"),
   icon: <MoonIcon />,

@@ -10,6 +10,8 @@ type Props = {
   color?: string;
 };
 
+console.log(`184_app/components/AuthLogo/index.tsx`);
+
 function AuthLogo({ providerName, color, size = 16 }: Props) {
   switch (providerName) {
     case "slack":

@@ -5,6 +5,8 @@ import Invite from "~/scenes/Invite";
 import { createAction } from "~/actions";
 import { UserSection } from "~/actions/sections";
 
+console.log(`178_app/actions/definitions/users.tsx`);
+
 export const inviteUser = createAction({
   name: ({ t }) => `${t("Invite people")}…`,
   icon: <PlusIcon />,

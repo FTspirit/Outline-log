@@ -8,6 +8,8 @@ import { createAction } from "~/actions";
 import { loadSessionsFromCookie } from "~/hooks/useSessions";
 import { TeamSection } from "../sections";
 
+console.log(`177_app/actions/definitions/teams.tsx`);
+
 export const switchTeamList = getSessions().map((session) => {
   return createAction({
     name: session.name,

@@ -19,6 +19,8 @@ import {
   mobileContextMenu,
 } from "~/styles/animations";
 
+console.log(`184_app/components/ContextMenu/index.tsx`);
+
 export type Placement =
   | "auto-start"
   | "auto"
